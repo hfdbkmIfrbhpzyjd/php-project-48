@@ -22,8 +22,6 @@ Options:
   --format <fmt>                Report format [default: stylish]
 DOC;
 
-require('path/to/src/docopt.php');
-
 $args = Docopt::handle($doc, array('version'=>'Gendiff 1.0'));
 
 foreach ($args as $k=>$v)
