@@ -6,13 +6,29 @@ use PHPUnit\Framework\TestCase;
 
 use function Differ\Differ\genDiff;
 
-class GenDiffTest extends TestCase
+const PATH_TO_FIRTST = '../tests/fixtures/file1.';
+const PATH_TO_SECOND = '../tests/fixtures/file2.';
+const PATH_TO_RESULT = __DIR__ . '/fixtures/results/res';
+
+class GendiffTest extends TestCase
 {
-    public function testGendiff()
+    /**
+     * @dataProvider additionProvider
+    */
+
+    public function testGendiff($extension)
     {
-        $pathToFile1 = "../tests/fixtures/file1.json";
-        $pathToFile2 = "../tests/fixtures/file2.json";
-        $expected = __DIR__ . "/fixtures/results/res";
+        $pathToFile1 = PATH_TO_FIRTST . $extension;
+        $pathToFile2 = PATH_TO_SECOND . $extension;
+        $expected = PATH_TO_RESULT;
         $this->assertEquals(file_get_contents($expected), genDiff($pathToFile1, $pathToFile2));
+    }
+
+    public function additionProvider()
+    {
+        return [
+            ['json'],
+            ['yml']
+        ];
     }
 }

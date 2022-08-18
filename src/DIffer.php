@@ -3,11 +3,12 @@
 namespace Differ\Differ;
 
 use function Functional\sort;
+use function Differ\Parsers\parse;
 
 function genDiff($firstFilePath, $secondFilePath, $format = 'stylish')
 {
-    $firstFile = json_decode(file_get_contents(genAbsolutPath($firstFilePath)), true);
-    $secondFile = json_decode(file_get_contents(genAbsolutPath($secondFilePath)), true);
+    $firstFile = (array) parse(genAbsolutPath($firstFilePath));
+    $secondFile = (array) parse(genAbsolutPath($secondFilePath));
 
     $firstFileKeys = array_keys($firstFile);
     $secondFileKeys = array_keys($secondFile);
