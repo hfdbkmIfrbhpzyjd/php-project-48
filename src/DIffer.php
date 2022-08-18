@@ -4,7 +4,7 @@ namespace Differ\Differ;
 
 use function Functional\sort;
 
-function genDiff($firstFilePath, $secondFilePath, $format)
+function genDiff($firstFilePath, $secondFilePath, $format = 'stylish')
 {
     $firstFile = json_decode(file_get_contents(genAbsolutPath($firstFilePath)), true);
     $secondFile = json_decode(file_get_contents(genAbsolutPath($secondFilePath)), true);
@@ -29,19 +29,19 @@ function genDiff($firstFilePath, $secondFilePath, $format)
         }
 
         if (is_null($value1)) {
-            return "+ {$key}: {$value2}";
+            return "    + {$key}: {$value2}";
         }
 
         if (is_null($value2)) {
-            return "- {$key}: {$value1}";
+            return "    - {$key}: {$value1}";
         }
 
         if ($value1 === $value2) {
-            return "  {$key}: {$value1}";
+            return "      {$key}: {$value1}";
         }
 
         if ($value1 !== $value2) {
-            return "- {$key}: {$value1}" . PHP_EOL . "+ {$key}: {$value2}";
+            return "    - {$key}: {$value1}" . PHP_EOL . "    + {$key}: {$value2}";
         }
 
         return null;
