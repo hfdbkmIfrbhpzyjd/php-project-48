@@ -3,8 +3,12 @@
     "bin": ["bin/gendiff"],
     "autoload": {
         "files": [
-            "src/DIffer.php",
-            "src/Parsers.php"
+            "src/Differ.php",
+            "src/Parsers.php",
+            "src/formatters/Stylish.php",
+            "src/formatters/Plain.php",
+            "src/formatters/Json.php",
+            "src/Formatters.php"
         ]
     },
     "authors": [{

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Differ\Parsers;
 
 use Symfony\Component\Yaml\Yaml;
 
-function parse($filePath)
+function parse(string $filePath): object
 {
     if (!file_exists($filePath)) {
         throw new \Exception("Invalid filepath: {$filePath}");
