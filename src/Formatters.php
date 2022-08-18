@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Differ\Formatters;
 
 function format(object $AST, string $format = 'stylish'): string
